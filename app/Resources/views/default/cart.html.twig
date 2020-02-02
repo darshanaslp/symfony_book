@@ -1,0 +1,91 @@
+{% extends 'home.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+		<div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Shopping Cart Add List</h6>
+                </div>
+                <div class="card-body">
+				<div class="table-responsive">
+                <table class="table table-bordered" id="cart" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th style="width:50%">Product</th>
+                        <th style="width:10%">Quantity</th>
+                        <th style="width:8%">Price</th>
+                        <th style="width:22%" class="text-center">Subtotal</th>
+                        <th style="width:10%"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for item in cart %}
+                        <tr>
+                            <td><a href="{{ path('book_show',{'id': item.id}) }}">{{ item.name }}</a></td>
+                            <td>{{ item.quantity }}</td>
+                            <td>${{ item.price }}</td>
+                            <td data-th="Subtotal" class="text-center">
+                                {% set var_1 = 0 + item.quantity|number_format(2,'.',',') %}
+                                {% set var_2 = 0 + item.price|number_format(2,'.',',') %}
+                                ${{ (var_1 * var_2)|number_format(2,'.',',') }}
+                            </td>
+                            <td>
+                                <a class="btn btn-danger btn-circle" href="{{ path('cart_remove',{'id': item.id}) }}"><i
+                                            class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr class="visible-xs">
+                        <td class="text-center"><strong>Total</strong></td>
+                    </tr>
+                    <tr>
+                        <td><a href="{{ path('homepage') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                        </td>
+                        <td></td>
+                        <td>
+						<a href="{{ path('cart_clear') }}" class="btn btn-danger btn-circle">
+						<i class="fas fa-trash"></i>
+						</a>
+                        </td>
+                        <td class="hidden-xs text-center"><strong>Total
+                                ${{ not app.session.get('totalPrice') ? "0" : app.session.get('totalPrice') }}</strong>
+                        </td>
+                        <td>
+                        <a href="{{ path('cart_checkout') }}" class="btn btn-success btn-icon-split">
+							<span class="icon text-white-50">
+							  <i class="fas fa-check"></i>
+							</span>
+							<span class="text">Checkout</span>
+						  </a>
+						</td>
+                    </tr>
+                    <tr>
+                        <form action="{{ path('coupon_add') }}" method="post">
+                        <td><input type="text" name="coupon" class="form-control" value="">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<input type="text" name="coupon" class="form-control" value="type redeem" readonly>
+							</td>
+                        <td>
+						<button type="submit" class="btn btn-info btn-icon-split">
+							 <span class="icon text-white-50">
+							 <i class="fas fa-info-circle"></i>
+							 </span>
+							 <span class="text">Coupon</span>
+							</button>
+						</td>
+                        <td class="hidden-xs text-center"></td>
+                        <td></td>
+                        </form>
+                    </tr>
+                    </tfoot>
+                </table>
+				</div>
+                </div>
+              </div>
+        </div>
+    </div>
+{% endblock %}
