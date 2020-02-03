@@ -3,7 +3,7 @@
 /**
  * Test case used for functional testing of home page and categories CRUD.
  *
- * @author Azraar Azward <mazraara@gmail.com>
+ * @author Darshana Perera <darshanaslp@gmail.com>
  */
 
 namespace Tests\AppBundle\Controller;
