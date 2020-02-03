@@ -8,16 +8,25 @@ Run below command setup the project dependencies
 
 Update the parameters.yml in app/config with below values
  
-database_host: 127.0.0.1 
+`database_host: 127.0.0.1 
+
 database_port: 3306 
+
 database_name: BookStore 
+
 database_user: root 
+
 database_password: 
+
 mailer_transport: smtp 
+
 mailer_host: smtp.mailtrap.io 
+
 mailer_user: null 
+
 mailer_password: null
-secret: 8PWLg7c2U
+
+secret: 8PWLg7c2U`
 
 You can Easily import bookstore.sql file to database
 
@@ -44,7 +53,9 @@ Finally to load the application run the below command
 `php bin/console server:run`
 
 Now the application should be available under http://localhost:8000/ 
+
 Login username: admin
+
 Login password: p@ssword
 
 To run the Test cases (Unit & Functional) run the below commands
