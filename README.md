@@ -8,7 +8,7 @@ Run below command setup the project dependencies
 
 Update the parameters.yml in app/config with below values
  
-`database_host: 127.0.0.1 
+database_host: 127.0.0.1 
 database_port: 3306 
 database_name: BookStore 
 database_user: root 
@@ -17,7 +17,7 @@ mailer_transport: smtp
 mailer_host: smtp.mailtrap.io 
 mailer_user: null 
 mailer_password: null
-secret: 8PWLg7c2U`
+secret: 8PWLg7c2U
 
 You can Easily import bookstore.sql file to database
 
@@ -53,4 +53,4 @@ Functional > `./vendor/bin/simple-phpunit tests/AppBundle/Controller/ `
 
 Unit > `./vendor/bin/simple-phpunit tests/AppBundle/Utils`
 
- if you get any permission issue running on docker, try to clear the cache `php bin/console cache:clear --env=prod`
+ if you get any permission issue clear the cache `php bin/console cache:clear --env=prod`
